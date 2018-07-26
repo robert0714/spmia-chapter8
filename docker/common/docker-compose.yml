@@ -12,6 +12,8 @@ services:
        EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
        EUREKASERVER_PORT: "8761"
        ENCRYPT_KEY:       "IMSYMMETRIC"
+    depends_on:
+        - "eurekaserver"
   zuulserver:
     image: johncarnell/tmx-zuulsvr:chapter8
     ports:
@@ -24,6 +26,9 @@ services:
       DATABASESERVER_PORT: "5432"
       EUREKASERVER_PORT:   "8761"
       CONFIGSERVER_PORT:   "8888"
+    depends_on:
+        - "eurekaserver" 
+        - "configserver"
   database:
     image: postgres:9.5
     ports:
@@ -50,6 +55,13 @@ services:
       KAFKASERVER_PORT:    "2181"
       REDIS_PORT:          "6379"
       ENCRYPT_KEY:       "IMSYMMETRIC"
+    depends_on:
+        - "database"
+        - "configserver"
+        - "eurekaserver" 
+        - "zuulserver" 
+        - "kafkaserver" 
+        - "redis" 
   organizationservice:
     image: johncarnell/tmx-organization-service:chapter8
     ports:
@@ -67,6 +79,12 @@ services:
       ZUULSERVER_PORT:     "5555"
       KAFKASERVER_PORT:    "2181"
       ENCRYPT_KEY:       "IMSYMMETRIC"
+    depends_on:
+        - "configserver"
+        - "eurekaserver" 
+        - "zuulserver" 
+        - "kafkaserver" 
+        - "redis" 
   redis:
     image: redis:alpine
     ports:
