@@ -13,7 +13,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>1.5.14.RELEASE</version>
+    <version>1.5.15.RELEASE</version>
   </parent>
   <dependencyManagement>
     <dependencies>
@@ -92,20 +92,17 @@
     <!--Spring Data Redis dependencies-->
     <dependency>
       <groupId>org.springframework.data</groupId>
-      <artifactId>spring-data-redis</artifactId>
-      <version>1.8.13.RELEASE</version>
+      <artifactId>spring-data-redis</artifactId> 
     </dependency>
 
     <dependency>
       <groupId>redis.clients</groupId>
-      <artifactId>jedis</artifactId>
-      <version>2.9.0</version>
+      <artifactId>jedis</artifactId> 
     </dependency>
 
     <dependency>
       <groupId>org.apache.commons</groupId>
-      <artifactId>commons-pool2</artifactId>
-      <version>2.4.3</version>
+      <artifactId>commons-pool2</artifactId> 
     </dependency>
     <dependency>
        <groupId>org.springframework.security</groupId>
